@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>FELIZ CUMPLE BRYAN</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(#631414, #d72121);
+        color: white;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 20px;
+        font-size: 2.5em;
+    }
+
+    .contenedor {
+        padding: 20px;
+    }
+
+    img {
+        width: 250px;
+        border-radius: 10px;
+        margin: 20px 0;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    }
+
+    p {
+        font-size: 1.2em;
+        margin: 10px;
+        line-height: 1.5;
+    }
+
+    .frases {
+        margin-top: 20px;
+        font-style: italic;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    .btn {
+        margin-top: 30px;
+        padding: 15px 25px;
+        background: #cea520;
+        color: black;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .mensaje {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 50%;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+    text-align: center;
+    }
+</style>
+
+</head>
+
+<body>
+
+<h1>🎉 ¡FELIZ CUMPLEAÑOS NAKAMA! 🏴‍☠️</h1>
+
+<div class="contenedor">
+
+    <!-- IMAGEN -->
+    <img src="IMAGENES/LUFFY.jpg" alt="Wanted Bryan">
+
+    <div class="mensaje">
+    <p>
+        Hoy celebramos mucho más que tu cumpleaños… 🎂<br><br>
+        Celebramos tu vida, tu forma de ser, y todas las aventuras que hemos vivido juntos 😎<br><br>
+        Gracias por tu amistad, por las risas, por los momentos épicos 😂🔥<br><br>
+        Que este nuevo año venga lleno de sueños cumplidos, locuras buenas y más historias que contar 🏴‍☠️<br><br>
+        ¡Feliz cumpleaños Bryan! ❤️
+    </p>
+    </div>
+
+    <!-- FRASES -->
+    <p id="frase" class="frases"></p>
+
+    <!-- BOTÓN -->
+    <button class="btn" onclick="mostrarVideo1()">🎬Es lo que hacen los amigos....</button>
+    <!-- BOTÓN -->
+    <button class="btn" onclick="mostrarVideo2()">🎬 Ver sorpresa especial</button>
+
+</div>
+
+<div id="miVideo1" style="display:none; margin-top:20px;">
+    <video width="300" controls>
+        <source src="IMAGENES/Quiero vivir de Robin  Audio Latino _ One Piece  Capítulo 278.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+</div>
+<div id="miVideo2" style="display:none; margin-top:20px;">
+    <video width="300" controls>
+        <source src="IMAGENES/Porque somos amiguis 🥺 One piece.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+</div>
+
+<!-- MÚSICA -->
+<audio id="musica" autoplay loop>
+    <source src="MUSICA/One Piece OP 1 - We Are! Lyrics.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+// FRASES DE ONE PIECE
+const frases = [
+    "Sigue tu sueño, sin importar lo imposible que parezca",
+    "El rey de los piratas no se rinde",
+    "Los verdaderos amigos son tu tripulación",
+    "No importa lo que el mundo diga, sigue adelante",
+    "Las aventuras nunca terminan",
+    "Un nakama siempre está contigo"
+];
+
+let index = 0;
+const fraseElemento = document.getElementById("frase");
+
+function mostrarFrases() {
+    fraseElemento.style.opacity = 0;
+
+    setTimeout(() => {
+        fraseElemento.innerText = frases[index];
+        fraseElemento.style.opacity = 1;
+        index = (index + 1) % frases.length;
+    }, 500);
+}
+
+setInterval(mostrarFrases, 3000);
+mostrarFrases();
+
+function mostrarVideo2() {
+    const contenedor = document.getElementById("miVideo1");
+    const video = contenedor.querySelector("video");
+    const musica = document.getElementById("musica");
+
+    // Mostrar video
+    contenedor.style.display = "block";
+
+    // Pausar música de fondo
+    musica.pause();
+
+    // Reproducir video
+    video.play();
+
+    // Cuando termine el video, vuelve la música
+    video.onended = function() {
+        musica.play();
+    };
+}
+
+function mostrarVideo1() {
+    const contenedor = document.getElementById("miVideo2");
+    const video = contenedor.querySelector("video");
+    const musica = document.getElementById("musica");
+
+    // Mostrar video
+    contenedor.style.display = "block";
+
+    // Pausar música de fondo
+    musica.pause();
+
+    // Reproducir video
+    video.play();
+
+    // Cuando termine el video, vuelve la música
+    video.onended = function() {
+        musica.play();
+    };
+}
+
+</script>
+
+<script>
+document.body.addEventListener("click", function () {
+    const musica = document.getElementById("musica");
+    musica.play();
+}, { once: true });
+</script>
+
+</body>
+</html>
